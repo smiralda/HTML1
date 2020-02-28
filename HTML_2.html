@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=<sc>, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: "Century Gothic";
+        color: darkblue;
+      }
+      h1,
+      h2 {
+        text-align: center;
+        background-color: blanchedalmond;
+        border: 0.5rem solid rgb(95, 80, 94);
+        border-radius: 1rem;
+        margin: 1rem;
+        padding: 0.8rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      #SeccioEspecial {
+        height: 30%;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+      }
+      #b1 {
+        flex: 1;
+        font-size: 2vw;
+        text-align: center;
+        background-color: darkgray;
+        margin: 1rem;
+        padding-top: 1rem;
+      }
+      #b2 {
+        flex: 1;
+        text-align: center;
+        margin: 1rem;
+        padding: 2rem;
+        color: white;
+        background-color: darkgreen;
+      }
+      #b3 {
+        flex: 1;
+        font-size: 1rem;
+        text-align: center;
+        margin: 1rem;
+        padding: 2rem;
+        color: darkslategray;
+        background-color: floralwhite;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#SeccioEspecial">Introducció</a></li>
+          <li>
+            <a href="#">Anàlisi</a>
+            <ul>
+              <li><a href="#">Part important</a></li>
+              <li><a href="#">Part secundària</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Conclusiók</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h1>Aquesta pàgina és una prova per fer texts flexibles</h1>
+    <article>
+      <h2>Aquí poso el segon títol</h2>
+      <section>
+        <p>
+          La idea és que aquest paràgraf quedi posat de tal manera que tot quedi
+          en una línia. <br />
+          També he posat un salt de línia utilitzant el br.
+        </p>
+        <p>I ara poso un altre paràgraf.</p>
+      </section>
+      <section id="SeccioEspecial">
+        <div id="b1">Text 1 del primer bloc</div>
+        <div id="b2">Text 2 del segon bloc</div>
+        <div id="b3">
+          Text 3 del tercer bloc, que és més llarg que els altres.
+        </div>
+      </section>
+      <section id="SeccioNormal">
+        <div><p>Aquest és un primer bloc normal</p></div>
+        <div>Aquest és un altre altre bloc també normal</div>
+        <div>
+          <p>Aquest tercer bloc té un primer paràgraf</p>
+          <p>I té un segon paràgraf.</p>
+        </div>
+      </section>
+    </article>
+  </body>
+</html>
