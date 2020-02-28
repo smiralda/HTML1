@@ -1,0 +1,67 @@
+  
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Form input[text] sample</title>
+    <style>
+      .flex{height: 200px;
+            border: 1px solid ;
+            display:flex;
+            flex-direction:column ;
+            align-items: stretch;
+            }
+      #a {flex: 1;width: 50px; height: 50px;background-color: blue;}
+      #b {flex:1;width: 100px; height: 25px;background-color:red;}
+      #c {width: 200px; height: 15px;background-color: rgb(200, 255, 0);}
+    </style>
+  </head>
+  <body>
+    <form action="/submit" method="get">
+      <p><label>Test 1 <input type="text" size="10" required></label></p>
+      <p><label>Test 2 <input type="text" size="25"></label></p>
+      <p><label>Test 3 <input type="text" minlength="5" required></label></p>
+      <p><label>Test 4 <input type="text" maxlength="10"></label></p>
+      <p><input type="submit"></p>
+    </form>
+    <form action="/submit" method="get">
+        <p><label>Telèfon      <input type="tel" name="a" required></label></p>
+        <p><label>Password <input type="password" name="b" required></label></p>
+        <p><label>URL      <input type="url" name="c" required></label></p>
+        <p><label>email    <input type="email" name="d" required></label></p>
+        <p><label>Nombre  <input type="number" name="e" required></label></p>
+        <p><label>Rang    <input type="range" name="f" required></label></p>
+        <p><label>Text<input type="text" name ="g" placeholder="Entra un text que t'agradi"</label></p>
+        <p><input type="submit"></p>
+      </form>
+
+      <h3>Selecció d'Universitat</h3>
+      <form action="/set-uni" method="get">
+        <p>
+          <select name="uni" required>
+            <option value="">Selecciona una universitat:</option>
+            <option value="ub">Universitat de Barcelona</option>
+            <option value="uab">Universitat Autònoma de Barcelona</option>
+            <option value="upc">Universitat Politècnica de Catalunya</option>
+            <option value="upf">Universitat Pompeu Fabra</option>
+          </select>
+        </p>
+        <input type="submit" value="Selecciona" />
+      </form>
+
+      <div class="flex">
+        <div id="a"></div>
+        <div id="b"></div>
+        <div id="c"></div>
+      </div>
+      <script>
+        console.log("Hello");
+        if (a) {} // Això és un comentari de només una línia.
+        /* Sistema per posar comentaris de vàries línies.
+        Ara salto de línia i segueix el comentari */
+        let a = 1, b = 'valor'
+        const cConstant = 'Valor fix'
+        console.log(`Àixò és una prova ${3+2} i queda molt bé`)
+      </script>
+  </body>
+</html>
