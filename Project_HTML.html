@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Project</title>
+    <style>
+      body {
+        font-family: "Century Gothic";
+      }
+      .TaulaGeneral {
+        width: 100%;
+        color: white;
+        background-color: slategray;
+        border-collapse: collapse;
+      }
+      .TaulaGeneral td {
+        padding: 0.3rem;
+        text-align: center;
+        border: 0.2rem solid white;
+      }
+      h1 {
+        padding: 1rem;  
+        font-variant: small-caps;
+        font-size: 3rem;
+      }
+      h2 {
+        font-variant: small-caps;
+        font-size: 2rem;
+      }
+      img {
+        vertical-align: middle;
+      }
+      .GrupPoemes {
+        height:fit-content;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+      }
+      .Poema {
+        flex: 1;
+        padding: 1rem;
+        background-color: darkseagreen;
+        border: 1rem solid white;
+      }
+      .TextPoema {
+        font-size: 1rem;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <table class="TaulaGeneral">
+        <tr>
+          <td>Key Project 1</td>
+          <td>Santi Miralda</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <strong>HTML Project - A Simple HTML Page</strong>
+          </td>
+        </tr>
+      </table>
+
+      <h1>
+        Poesia de Josep Carner
+        <img
+          src="https://lletra.uoc.edu/especials/folch/pictures/carner.jpg"
+          alt="Imatge de Josep Carner"
+        />
+      </h1>
+    </header>
+    <section class="GrupPoemes">
+      <div class="Poema">
+        <h2>Tres Noies</h2>
+        <p class="TextPoema">
+          Passen tres noies, totes de blanc, <br />
+          sota una pluja de sol batent, <br />
+          mans enllaçades, galtes rosades <br />
+          i cabelleres volant al vent. <br />
+          Inconegudes ja de llurs mares, <br />
+          van deleroses qui sap a on; <br />
+          sembla que estrenin el goig de l'herba <br />
+          i que refacin el cor del món. <br />
+          Oh nova glòria, ben tots memòria! <br />
+          Ulls que llampeguen i boca ardent, <br />
+          mans enllaçades, galtes rosades <br />
+          i cabelleres volant al vent!
+        </p>
+      </div>
+      <div class="Poema">
+        <h2>Desolació</h2>
+        <p class="TextPoema">
+          Com dir-nos més germà i germana <br />
+          si hem fet, plegats, el nostre dol? <br />
+          ¿Com parlarem de la fontana, <br />
+          si fins l'herbei és mort al volt? <br />
+          ¿Per què en baixant de les eroles <br />
+          seuríem vora els tamarius? <br />
+          ¿Per què mai més collir violes <br />
+          ara que els cors s'han fet esquius? <br />
+          ¿Per què veurem el dia encara <br />
+          -la nosa ardent, l'enuig sonor- <br />
+          si quan s'aixequi l'alba clara <br />
+          ens trobarem sense l'amor? <br />
+        </p>
+      </div>
+      <div class="Poema">
+        <h2>Plou</h2>
+        <p class="TextPoema">
+          Totes les bruixes d'aquest món perdut <br />
+          són en el cel bretó, que en desvaria; <br />
+          l'aigua bruny, delerosa, el punxegut <br />
+          capell dels cloquerets de Normandia. <br />
+          París regala deplorablement;<br />
+          es nega Niça d'aiguarells en doina. <br />
+          Miles d'esgarrifances d'un moment <br />
+          punyen Sena, Garona, Rin i Roine. <br />
+          L'aigua podreix els carrerons malalts; <br />
+          gargolen per cent becs les catedrals. <br />
+          La pluja a tot arreu, esbiaixant-se, <br />
+          veu solament alguna mà que es mou <br />
+          fregant un vidre de finestra. Plou <br />
+          a totes les estacions de França. <br />
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
