@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ca">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,16 +8,23 @@
       body {
         font-family: "Century Gothic";
       }
-      .TaulaGeneral {
+
+      #TaulaCapçalera {
         width: 100%;
         color: white;
         background-color: slategray;
         border-collapse: collapse;
       }
-      .TaulaGeneral td {
+      #TaulaCapçalera td {
         padding: 0.3rem;
         text-align: center;
         border: 0.2rem solid white;
+      }
+      #TaulaCapçalera a:link {
+        color: white;
+      }
+      #TaulaCapçalera a:visited {
+        color: white;
       }
       h1 {
         padding: 1rem;
@@ -29,9 +36,34 @@
         font-size: 2rem;
         text-align: center;
       }
+      h3 {
+          padding: 1rem;
+        font-size: 1rem;
+      }
+
+      #TaulaNavegacio {
+        width: 100%;
+        color: white;
+        background-color: darkseagreen;
+        border: 1rem solid white;
+        border-collapse: collapse;
+      }
+      #TaulaNavegacio td {
+        padding: 0.3rem;
+        text-align: center;
+        border: 0.2rem solid white;
+      }
+      #TaulaNavegacio a:link {
+        color: black;
+      }
+      #TaulaNavegacio a:visited {
+        color: white;
+      }
+
       img {
         vertical-align: middle;
       }
+
       .GrupPoemes {
         height: fit-content;
         width: 100%;
@@ -60,9 +92,14 @@
   </head>
   <body>
     <header>
-      <table class="TaulaGeneral">
+      <table id="TaulaCapçalera">
         <tr>
-          <td>Key Project 1</td>
+          <td>
+            <a
+              href="https://github.com/smiralda/HTML1/blob/master/Project_HTML.html"
+              >Key Project 1</a
+            >
+          </td>
           <td>Santi Miralda</td>
         </tr>
         <tr>
@@ -79,9 +116,30 @@
           alt="Imatge de Josep Carner"
         />
       </h1>
+      <h3>
+        <a href="https://www.versos.cat/autor/josep-carner/poemes"
+          >Més informació</a
+        >
+      </h3>
     </header>
+
+    <nav>
+      <table id="TaulaNavegacio">
+        <tr>
+          <td><a href="#Poema1">Tres Noies</a></td>
+          <td><a href="#Poema2">Desolació</a></td>
+          <td><a href="#Poema3">Plou</a></td>
+          <td><a href="#Poema4">Calor</a></td>
+          <td><a href="#Poema5">L'alzinar i el pollanc</a></td>
+          <td><a href="#Poema6">Missenyora malalta</a></td>
+          <td><a href="#Poema7">Un enuig</a></td>
+          <td><a href="#Poema8">Desfici</a></td>
+        </tr>
+      </table>
+    </nav>
+
     <section class="GrupPoemes">
-      <div class="Poema">
+      <div class="Poema" id="Poema1">
         <h2>Tres Noies</h2>
         <p class="TextPoema">
           Passen tres noies, totes de blanc, <br />
@@ -98,7 +156,7 @@
           i cabelleres volant al vent!
         </p>
       </div>
-      <div class="Poema">
+      <div class="Poema" id="Poema2">
         <h2>Desolació</h2>
         <p class="TextPoema">
           Com dir-nos més germà i germana <br />
@@ -115,7 +173,7 @@
           ens trobarem sense l'amor? <br />
         </p>
       </div>
-      <div class="Poema">
+      <div class="Poema" id="Poema3">
         <h2>Plou</h2>
         <p class="TextPoema">
           Totes les bruixes d'aquest món perdut <br />
@@ -136,7 +194,7 @@
       </div>
     </section>
     <section class="GrupPoemes">
-      <div class="Poema">
+      <div class="Poema" id="Poema4">
         <h2>Calor</h2>
         <p class="TextPoema">
           Una fenollassa <br />
@@ -160,7 +218,7 @@
         src="https://cdn.zendalibros.com/wp-content/uploads/2018/11/poemas-de-josep-carner.jpg"
         alt="Imatge de Josep Carner."
       />
-      <div class="Poema">
+      <div class="Poema" id="Poema5">
         <h2>L'alzinar i el pollanc</h2>
         <p class="TextPoema">
           Un alzinar tot negre en el matí <br />
@@ -181,7 +239,7 @@
         src="https://4.bp.blogspot.com/-cL3eZJEw2p0/UYqukI6P9VI/AAAAAAAADFg/oy5gi84smG0/s1600/Carner3.jpg"
         alt="Imatge de Josep Carner"
       />
-      <div class="Poema">
+      <div class="Poema" id="Poema6">
         <h2>Missenyora malalta</h2>
         <p class="TextPoema">
           Quina metzina estranya, senyora, emmaleïa <br />
@@ -207,7 +265,7 @@
       />
     </section>
     <section class="GrupPoemes">
-      <div class="Poema">
+      <div class="Poema" id="Poema7">
         <h2>Un enuig</h2>
         <p class="TextPoema">
           Un enuig, un enuig és una cosa <br />
@@ -227,7 +285,7 @@
         src="https://upload.wikimedia.org/wikipedia/commons/5/55/Josep_Carner_1970.jpg"
         alt="Imatge Josep Carner"
       />
-      <div class="Poema">
+      <div class="Poema" id="Poema8">
         <h2>Desfici</h2>
         <p class="TextPoema">
           Negre desfici i estranya quimera, <br />
