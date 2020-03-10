@@ -1,0 +1,166 @@
+<html lang="cat">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taula Operacions</title>
+
+    <style>
+      body {
+        margin: 1rem;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      form {
+        display: table;
+        font-family: monospace;
+      }
+      form p {
+        display: table-row;
+      }
+      form label,
+      form input,
+      form button {
+        display: table-cell;
+        margin: 0.4em;
+      }
+      form input[type="number"] {
+        width: 8em;
+      }
+      #TaulaResultats {
+        background-color: #eee;
+        border-collapse: collapse;
+        font-family: monospace;
+      }
+      #TaulaResultats td,
+      #TaulaResultats th {
+        border: 1px solid #aaa;
+        padding: 0.5em;
+      }
+      #CosTaulaResultats td:nth-child(3) {
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Taula d'operacions</h1>
+    <form>
+      <p>
+        <label for="Op1">Operand 1</label>
+        <input type="number" name="Op1" id="Operand1" value="0" />
+        <input type="button" id="Operand1_Inc10" value="+ 10" />
+        <input type="button" id="Operand1_Dec10" value="- 10" />
+      </p>
+
+      <p>
+        <label for="Op2">Operand 2</label>
+        <input type="number" name="Op2" id="Operand2" value="0" />
+        <input type="button" id="Operand2_Inc10" value="+ 10" />
+        <input type="button" id="Operand2_Dec10" value="- 10" />
+      </p>
+
+      <p>
+        <label></label>
+        <input type="button" id="Calcula" value="Calcula" />
+      </p>
+    </form>
+
+    <p></p>
+    <table id="TaulaResultats">
+      <thead>
+        <tr>
+          <th colspan="3">Taula de resultats d'operacions</th>
+        </tr>
+      </thead>
+      <tbody id="CosTaulaResultats"></tbody>
+    </table>
+
+    <script>
+      // Increment de l'operand 1
+      const Operand1 = document.querySelector("#Operand1");
+      document
+        .querySelector("#Operand1_Inc10")
+        .addEventListener("click", event => {
+          Operand1.value = String(+Operand1.value + 10);
+        });
+      document
+        .querySelector("#Operand1_Dec10")
+        .addEventListener("click", event => {
+          Operand1.value = String(+Operand1.value - 10);
+        });
+
+      // Increment de l'operand 2
+      const Operand2 = document.querySelector("#Operand2");
+      document
+        .querySelector("#Operand2_Inc10")
+        .addEventListener("click", event => {
+          Operand2.value = String(+Operand2.value + 10);
+        });
+      document
+        .querySelector("#Operand2_Dec10")
+        .addEventListener("click", event => {
+          Operand2.value = String(+Operand2.value - 10);
+        });
+
+      //Definició de la matriu d'operacions
+      const Operacions = [
+        { NomOperacio: "Suma", Operador: "+", Resultat: (a, b) => a + b },
+        { NomOperacio: "Resta", Operador: "-", Resultat: (a, b) => a - b },
+        { NomOperacio: "Valor absolut Resta", Operador: "||", Resultat: (a, b) => Math.abs(a - b) },
+        { NomOperacio: "Producte", Operador: "*", Resultat: (a, b) => a * b },
+        { NomOperacio: "Divisió", Operador: "/", Resultat: (a, b) => a / b },
+        { NomOperacio: "Mòdul", Operador: "%", Resultat: (a, b) => a % b },
+        { NomOperacio: "Potència", Operador: "**", Resultat: (a, b) => a ** b },
+        { NomOperacio: "Arrel", Operador: "**", Resultat: (a, b) => a ** (1/b) }
+      ];
+
+      //Creació de la taula de resultats
+      const CosTaulaResultats = document.querySelector("#CosTaulaResultats");
+      document.querySelector("#Calcula").addEventListener("click", event => {
+        BorraCosTaula(CosTaulaResultats);
+        AfegeixOperacioTaula(
+          CosTaulaResultats,
+          "Operació",
+          "Operador",
+          "Resultat",
+          true
+        );
+        let xValor1 = Number(Operand1.value);
+        let xValor2 = Number(Operand2.value);
+        Operacions.forEach(xOperacio => {
+          AfegeixOperacioTaula(
+            CosTaulaResultats,
+            `${xOperacio.NomOperacio}`,
+            `${xValor1} ${xOperacio.Operador} ${xValor2}`,
+            `${xOperacio.Resultat(xValor1, xValor2)}`,
+            false
+          );
+        });
+      });
+
+      // Borra el cos de la taula.
+      function BorraCosTaula(xCosTaula) {
+        while (xCosTaula.firstElementChild) {
+          xCosTaula.firstElementChild.remove();
+        }
+      }
+
+      // Afegeix una fila al cos de la taula.
+      function AfegeixOperacioTaula(
+        xCosTaula,
+        xOperacio,
+        xOperador,
+        xResultat,
+        xEsTitol = false
+      ) {
+        let xFila = document.createElement("tr");
+        let xTag = xEsTitol ? "th" : "td";
+        xResultat = xEsTitol
+          ? xResultat
+          : Number(xResultat).toLocaleString("es-ES");
+        xFila.innerHTML = `<${xTag}>${xOperacio}</${xTag}>`;
+        xFila.innerHTML += `<${xTag}>${xOperador}</${xTag}>`;
+        xFila.innerHTML += `<${xTag}>${xResultat}</${xTag}>`;
+        xCosTaula.appendChild(xFila);
+      }
+    </script>
+  </body>
+</html>

@@ -109,12 +109,21 @@
         text-align:initial
         font-size: 1.5rem;
       }
-      #Formulari p{
+      #Formulari div{
           text-indent: 1rem;
       }
       #TitolFormulari {
         border: 1rem solid white;
         padding: 0.5rem;
+        background-color: darkseagreen;
+      }
+      #CosFormulari{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .EtiquetaControl{
+        width: 30%;
         background-color: darkseagreen;
       }
       .TextInput {
@@ -379,27 +388,29 @@
     <section id="Formulari">
       <div id="TitolFormulari"><h2>La teva opinió</h2></div>
 
-      <form action="Pregunta">
-        <p>
-          <label>
+      <form id="CosFormulari" action="">
+        <div>
+          <label class="EtiquetaControl" for="Control1">
             Quin poema t'ha agradat més?
-            <input
-              type="text"
-              class="TextInput"
-              required
-              placeholder="Nom del poema"
-              size="50"
-            />
           </label>
-        </p>
-        <p>
-          <label>
+          <input
+            type="text"
+            id="Control1"
+            class="TextInput"
+            required
+            placeholder="Nom del poema"
+            size="50"
+          />
+        </div>
+        <div>
+          <label class="EtiquetaControl" for="Control2">
             Quin dia és avui?
-            <input type="date" class="TextInput" />
           </label>
-        </p>
+          <input type="date" id="Control2" class="TextInput" />
+          
+        </div>
 
-        <p>
+        <div>
           Selecciona el poema que t'ha agradat més:
           <span class="TextInput">
             <label>
@@ -415,7 +426,7 @@
               Un enuig
             </label>
           </span>
-        </p>
+        </div>
       </form>
     </section>
   </body>
