@@ -87,7 +87,7 @@ module.exports = class Baralla {
     return this;
   }
   // Mètode que barreja una baralla amb el mètode 'Fisher-Yates'
-  get cartesEnJoc() {
+  get mesclaCartes() {
     this._cartesEnJoc = [...this.cartes];
     for (let i = this._cartesEnJoc.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));

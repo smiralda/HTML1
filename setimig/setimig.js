@@ -91,12 +91,14 @@ barallaSIM.tipus = "fra";
 barallaSIM.valorCartes = [1, 2, 3, 4, 5, 6, 7, 0, 0, 0.5, 0.5, 0.5, 0.5];
 barallaSIM = barallaSIM.generaCartes.seleccionaCartesPerValor;
 
-// s'obtenen les cartes en joc mesclades.
-let cartesEnJoc = barallaSIM.cartesEnJoc;
+let cartes = [];
 
 // Es juga cada una de les rondes.
 for (let r = 1; r <= numRondes; r++) {
   console.log(`\n*** ${ordinalRondes[r]} ronda ***`);
+  
+  // s'obtenen les cartes en joc mesclades.
+  cartes = barallaSIM.mesclaCartes;
   
   //Es juga per cada un dels jugadors.
   //Es comença per la posició 1 ja que la 0 és la banca.
@@ -117,7 +119,7 @@ for (let r = 1; r <= numRondes; r++) {
       //Treu cartes fins que el jugador es planta o bé iguala o supera el set i mig.
       do {
         esCanviAposta = false;
-        carta = cartesEnJoc.shift();
+        carta = cartes.shift();
         jugador.punts += carta.valor;
         console.log(
           `  ${carta.nom} ${carta.prep}${carta.pal}. Punts: ${jugador.punts}. Aposta: ${aposta}`
@@ -162,7 +164,7 @@ for (let r = 1; r <= numRondes; r++) {
         banca.punts = 0;
         esSimSuperat = false;
         do {
-          carta = cartesEnJoc.shift();
+          carta = cartes.shift();
           banca.punts += carta.valor;
           console.log(
             `  ${carta.nom} ${carta.prep}${carta.pal}. Punts: ${banca.punts}`
