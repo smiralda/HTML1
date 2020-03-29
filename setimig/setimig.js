@@ -1,11 +1,7 @@
 //  Programa per jugar al set i mig
 
 const prompt = require("prompt-sync")({ sigint: true });
-
-/*  Crearem la baralla de cartes a partir de la baralla espanyola.
-    Tenim 48 cartes del 1 al 12 dels 4 pals oros, copes, espases i bastos.
-    Crearem una baralla barrejada que tindrà les cartes del 1 al 7 i les cartes del 10 al 12 amb el valor de 0.5
-*/
+const Baralla = require('./baralla.js');
 
 const nomBanca = "Banca";
 const saldoBanca = 500;
@@ -28,44 +24,6 @@ const ordinalRondes = [
 
 const maxJugadors = 5;
 const ordinalJugadors = [null, "Primer", "Segon", "Tercer", "Quart", "Cinquè"];
-
-// Funció que retorna una baralla espanyola ordenada.
-// Per carta tenim el valor de la carta en el set i mig.
-function obteBarallaEsp() {
-  const pals = ["Oros", "Copes", "Espases", "Bastos"];
-  const preposPals = ["d'", "de ", "d'", "de "];
-  const valorsSIM = [1, 2, 3, 4, 5, 6, 7, 0, 0, 0.5, 0.5, 0.5];
-
-  const barallaEsp = [];
-  for (let p = 0; p < 4; p++) {
-    for (let n = 0; n < 12; n++) {
-      barallaEsp.push({
-        numCarta: String(n+1),
-        palCarta: pals[p],
-        preposPal: preposPals[p],
-        valorSIM: valorsSIM[n]
-      });
-    }
-  }
-  return barallaEsp;
-}
-
-// Funció que obté una baralla amb només les cartes del set i mig i amb el valor de les cartes.
-function obteBarallaSIM(baralla) {
-  const barallaSIM = barrejaBaralla(
-    baralla.filter(carta => carta.valorSIM != 0)
-  );
-  return barallaSIM;
-}
-
-// Funció que barreja una baralla amb el mètode 'Fisher-Yates'
-function barrejaBaralla(baralla) {
-  for (let i = baralla.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    [baralla[i], baralla[j]] = [baralla[j], baralla[i]];
-  }
-  return baralla;
-}
 
 //  Desenvolupament del joc:
 
@@ -127,7 +85,14 @@ let numRondes = obteValor(`Quantes rondes vols jugar`, maxRondes);
 // S'inicia el joc.
 console.log(`Comença el joc.`);
 
-let baralla = obteBarallaSIM(obteBarallaEsp());
+// S'obté la baralla de cartes del set i mig.
+let barallaSIM = new Baralla();
+barallaSIM.tipus = "fra";
+barallaSIM.valorCartes = [1, 2, 3, 4, 5, 6, 7, 0, 0, 0.5, 0.5, 0.5, 0.5];
+barallaSIM = barallaSIM.generaCartes.seleccionaCartesPerValor;
+
+// s'obtenen les cartes en joc mesclades.
+let cartesEnJoc = barallaSIM.cartesEnJoc;
 
 // Es juga cada una de les rondes.
 for (let r = 1; r <= numRondes; r++) {
@@ -152,10 +117,10 @@ for (let r = 1; r <= numRondes; r++) {
       //Treu cartes fins que el jugador es planta o bé iguala o supera el set i mig.
       do {
         esCanviAposta = false;
-        carta = baralla.shift();
-        jugador.punts += carta.valorSIM;
+        carta = cartesEnJoc.shift();
+        jugador.punts += carta.valor;
         console.log(
-          `  ${carta.numCarta} ${carta.preposPal}${carta.palCarta}. Punts: ${jugador.punts}. Aposta: ${aposta}`
+          `  ${carta.nom} ${carta.prep}${carta.pal}. Punts: ${jugador.punts}. Aposta: ${aposta}`
         );
         if (jugador.punts > 7.5) {
           esSimSuperat = true;
@@ -197,10 +162,10 @@ for (let r = 1; r <= numRondes; r++) {
         banca.punts = 0;
         esSimSuperat = false;
         do {
-          carta = baralla.shift();
-          banca.punts += carta.valorSIM;
+          carta = cartesEnJoc.shift();
+          banca.punts += carta.valor;
           console.log(
-            `  ${carta.numCarta} ${carta.preposPal}${carta.palCarta}. Punts: ${banca.punts}`
+            `  ${carta.nom} ${carta.prep}${carta.pal}. Punts: ${banca.punts}`
           );
           if (banca.punts > 7.5) {
             esSimSuperat = true;

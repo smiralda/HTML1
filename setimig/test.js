@@ -1,1 +1,0 @@
-console.log(Range('a', 'c'));
